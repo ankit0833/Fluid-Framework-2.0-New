@@ -1,0 +1,28 @@
+name: CI
+on:  
+ push:
+    branches:
+    - main
+jobs:
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Lighthouse
+        uses: shopify/lighthouse-ci-action@1.0
+        with:
+          app_id: ${{ secrets.SHOP_APP_ID }}
+          app_password: ${{ secrets.SHOP_APP_PASSWORD }}
+          store: ${{ secrets.SHOP_STORE }}
+          password: ${{ secrets.SHOP_PASSWORD }}
+          lhci_github_token: ${{ secrets.LHCI_GITHUB_TOKEN }}
+          product_handle: 'dlmn-boyfriend-v-neck-tee-1'
+          collection_handle: 'spring'
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Theme Check
+        uses: shopify/theme-check-action@v1

@@ -1,0 +1,271 @@
+<div class="msg-tooltip wishlistError"></div>
+
+<div class="hulk__wishlist-wrap" style="display:none">
+    <div class="wishlist-popup" data-hulkappsMyWishlistPopup>
+        <div class="wishlist-modal modal-medium">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__header" style="padding-top: 15px;">
+                    <h2 data-sidebarWidgetwishlisttitle>Your wishlist</h2>
+                    <button class="close-popup" data-closeMyWishlistPopup2><span class="icon-wishlist-cross"></span></button>
+                </div>
+                <div class="wishlist-modal__body">
+                    <select class="hulk-wishlists" data-sidebarWidgetHulkWishlists style="display: none;"></select>
+                    <div class="wishlist-empty" data-hulkemptywishlist="" style="display: none;">
+                        <div class="empty_content">
+                            <span>Please add product to your wishlist to see them here.</span>
+                        </div>
+                    </div>
+                    <div class="wishlist-login" data-hulkloginmsg="" style="display: none;">
+                        <div class="empty_content">
+                            <span>Login to see your wishlist!</span>
+                        </div>
+                    </div>
+                    <ul class="bulk_action">
+                        <li data-selectallwishlist="" style="display: inline-block;"><input type="checkbox" id="hulk_select_all" name="select_all" value="select_all" data-com.bitwarden.browser.user-edited="yes"><span>Select All</span></li>
+                        <li data-hulkmoveallitmes="" style="display: none;"><a href="javascript:void(0)" aria-describedby="a11y-external-message">Move to cart</a></li>
+                        <li data-hulkdeleteallitmes="" style="display: none;"><a href="javascript:void(0)" aria-describedby="a11y-external-message">Delete</a></li>
+                    </ul>
+                    <div class="wishlist-grid-view" data-hulkMyWishlistItems="" style="display: flex;">
+                    </div>
+                </div>
+                <div class="wishlist-modal__footer">
+                    <a href="/account/login" class="wishlist-btn hulkBtnStyle" data-loginBtn style="display: none;">Login</a>
+                    <a href="/{{ shop.metafields.hulkapps_wishlist.hulkapps_wishlist_general.app_proxy_prefix }}/{{ shop.metafields.hulkapps_wishlist.hulkapps_wishlist_general.app_proxy_path }}" class="wishlist-btn hulkBtnStyle" data-viewMore style="display: none;">Explore more products</a>
+                    <a href="/collections" class="wishlist-btn hulkBtnStyle" data-addProductBtn style="display: none;">Add products</a>
+                    <button class="wishlist-btn hulkBtnStyle close-btn" data-closeMyWishlistPopup style="display: none; margin-left: 15px;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wishlist-popup" data-hulkappsWishlistPopup>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__header">
+                    <h2 data-hulkWishlistHeading>Add to wishlist</h2>
+                    <button class="close-popup" data-closeWishlistPopup><span class="icon-wishlist-cross"></span></button>
+                </div>
+                <div class="wishlist-modal__body">
+                    <p data-chooseWishlistText>Choose your wishlist to be added</p>
+                    <form>
+                        <ul class="choose-wishlist-option" data-userWishlists>
+
+                        </ul>
+                        <ul class="choose-wishlist-option" >
+                            <li data-openCreateSection>
+                                <a href="#" class="creat_link">
+                                    <span class="icon-wishlist-plus hulkThemeColor"></span><span data-createWishlistText class="hulkThemeColor">Create New wishlist</span>
+                                </a>
+                            </li>
+                            <li data-addNewWishlist style="display: none">
+                                <div class="input-group">
+                                    <button class="close-new-wishlist-input" data-closenewwishlistinput="" style="font-size: 10px;float: right;padding: 6px; color: #aaa;">
+                                        <span class="icon-wishlist-cross"></span>
+                                    </button>
+                                    <label for="newWishlist" class="wishlist-checkbox"><span></span><input data-newWishlist type="text" placeholder="Ex. Watch" value=""></label>
+                                    <button class="wishlist-btn hulkBtnStyle" data-saveNewWishlist>Save</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="wishlist-modal__footer">
+                    <a data-myWishlistText href="/apps/advanced-wishlist" class="modal-footer-link hulkThemeColor">
+                        My Wishlist
+                    </a>
+                    <button class="wishlist-btn hulkBtnStyle" disabled data-AddToWishlist>Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-popup wishlist-share-popup" data-HulkappsShare>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <button class="close-popup" data-closewishlistpopup><span class="icon-wishlist-cross" data-closeWishlistPopup></span></button>
+                <div class="wishlist-modal__header text-upper">
+                    {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.modal_title) %}
+                        <h2 class="">{{ shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.modal_title }}</h2>
+                    {% else %}
+                        <h2>Share my wishlist</h2>
+                    {% endif %}
+                </div>
+                <div class="wishlist-modal__body">
+                    {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.set_icon == 'set_1') %}
+                        <ul class="social-list-icon">
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.facebook) %}
+                                <li><a href="#" data-shareFacebook target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_facebook_1.svg" alt="Facebook Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.pinterest) %}
+                                <li><a href="#" data-sharePintrest target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_pinterest_1.svg" alt="Pinterest Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.twitter) %}
+                                <li><a href="#" data-shareTwitter target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_twitter_1.svg" alt="Twitter Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.email) %}
+                                <li><a href="#" data-shareTumblr target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_email_1.svg" alt="Email Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                        </ul>
+                    {% elsif(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.set_icon == 'set_2') %}
+                        <ul class="social-list-icon">
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.facebook) %}
+                                <li><a href="#" data-shareFacebook target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_facebook_2.svg" alt="Facebook Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.pinterest) %}
+                                <li><a href="#" data-sharePintrest target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_pinterest_2.svg" alt="Pinterest Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.twitter) %}
+                                <li><a href="#" data-shareTwitter target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_twitter_2.svg" alt="Twitter Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                            {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.email) %}
+                                <li><a href="#" data-shareTumblr target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_email_2.svg" alt="Email Share" style="width: 100%;" /></a></li>
+                            {% endif %}
+                        </ul>
+                    {% else %}
+                        <ul class="social-list-icon">
+                            <li><a href="#" data-shareFacebook target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_facebook_1.svg" alt="Facebook Share" style="width: 100%;" /></a></li>
+                            <li><a href="#" data-sharePintrest target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_pinterest_1.svg" alt="Pinterest Share" style="width: 100%;" /></a></li>
+                            <li><a href="#" data-shareTwitter target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_pinterest_1.svg" alt="Twitter Share" style="width: 100%;" /></a></li>
+                            <li><a href="#" data-shareTumblr target="_blank"><img src="https://hulkapps-wishlist.nyc3.digitaloceanspaces.com/assets/images/ic_email_1.svg" alt="Email Share" style="width: 100%;" /></a></li>
+                        </ul>
+                    {% endif %}
+
+                    {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.copy_link_title) %}
+                        <p>{{ shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.copy_link_title }}</p>
+                    {% else %}
+                        <p>Copy wishlist link to share</p>
+                    {% endif %}
+                    <form class="input-group search-bar" style="padding: 0;">
+                        <input type="text" id="shareURL" value="" class="input-group-field" data-shareURL readonly />
+                        <span class="input-group-btn">
+                          <button type="button" class="wishlist-btn hulkBtnStyle" data-copyshareURLButtom>
+                          {% if(shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.copy_button_text) %}
+                              <p>{{ shop.metafields.hulkapps_wishlist.hulkapps_wishlist_buttonstyle.copy_button_text }}</p>
+                          {% else %}
+                              <p>Copy</p>
+                          {% endif %}
+                          </button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-popup wishlist-share-popup" data-HulkappsSubscribe>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <button class="close-popup" data-closewishlistpopup><span class="icon-wishlist-cross" data-closeWishlistPopup></span></button>
+                <div class="wishlist-modal__body">
+                    <div class="Subscribe-content">
+                        <h5 data-popupTitle>Subscribe and get alerts about your Wishlist</h5>
+                        <p data-popupSubTitle>We will notify you on events like Low stock, Restock, Price drop or general reminders so that you don’t miss the deal</p>
+                    </div>
+                    <form action="/subscribe" method="post" class="input-group search-bar" role="subscribe" data-HulkSubscribeForm>
+                        <input type="email" name="email" value="" placeholder="user@gmail.com" class="input-group-field" aria-label="Search our store">
+                        <span class="input-group-btn">
+              <button type="submit" class="wishlist-btn hulkBtnStyle" data-HulkSubscribeButton>Subscribe</button>
+            </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-popup wishlist-card" data-hulkQuickView >
+        <div class="wishlist-modal modal-medium">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__body product-view-popup">
+
+                    <button class="close-popup" data-closewishlistpopup><span class="icon-wishlist-cross" data-closeWishlistPopup></span></button>
+                    <div class="wrapper_grid">
+                        <div class="grid_5">
+                            <div class="wishlist-carousel-main carousel" data-mainCarousal>
+                                <div class="carousel-inner">
+                                </div>
+                                <ol class="carousel-indicators" data-navCarousel>
+
+                                </ol>
+                                <div class="slider-arrows">
+                                    <div class="carousel-control left">
+                                        <div class="arrow left">
+                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve"> <g> <g> <polygon points="48.9,128 176.9,256 207.1,225.8 109.3,128 207.1,30.2 176.9,0 "/> </g> </g> </svg>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-control right">
+                                        <div class="arrow right">
+                                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;" xml:space="preserve"> <g> <g> <polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128 "/> </g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid_7">
+                            <div class="popup-details">
+                                <div class="popup-product-info">
+                                    <p class="vendor" data-vendor></p>
+                                    <p class="title" data-title></p>
+                                    <p class="price" data-price></p>
+                                </div>
+                                <div class="popup-product-offer" data-shortDscription>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                                <button class="wishlist-btn hulkBtnStyle" data-addprotocart>Move to cart</button>
+                                <p class="products-details-link hulkThemeColor"><a data-goToProduct class="hulkThemeColor">See Product Details</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wish list delete popup design -->
+    <div class="wishlist-popup wishlist-delete-popup" data-hulkappsDeletePrompt>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__body">
+                    <button class="close-popup" data-closewishlistpopup><span class="icon-wishlist-cross"></span></button>
+                    <h4>Are you sure you want to delete this wishlist?</h4>
+                    <div class="btn-wrap">
+                        <button class="wishlist-btn hulkBtnStyle" data-deleteHulkWishlist >Yes</button>
+                        <button class="wishlist-btn hulkBtnStyle" data-closewishlistpopup>No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wish list delete wishlist items popup design -->
+    <div class="wishlist-popup wishlist-delete-popup" data-hulkappsDeleteItemsPrompt>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__body">
+                    <button class="close-popup" data-closeWishlistItemsPopup2><span class="icon-wishlist-cross"></span></button>
+                    <h4 data-hulkDeleteItemsPopupTitle>Are you sure you want to delete selected wishlist products?</h4>
+                    <div class="btn-wrap">
+                        <button class="wishlist-btn hulkBtnStyle" data-deleteHulkWishlistItems >Yes</button>
+                        <button class="wishlist-btn hulkBtnStyle" data-closeWishlistItemsPopup>No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wish list move wishlist items popup design -->
+    <div class="wishlist-popup wishlist-delete-popup" data-hulkappsMoveItemsPrompt>
+        <div class="wishlist-modal modal-small">
+            <div class="wishlist-modal__content">
+                <div class="wishlist-modal__body">
+                    <button class="close-popup" data-hulkappsMoveItemsCancel><span class="icon-wishlist-cross"></span></button>
+                    <h4 data-hulkMoveItemsPopupTitle>Out of stock products will be not move. Are you want to move selected wishlist products?</h4>
+                    <div class="btn-wrap">
+                        <button class="wishlist-btn hulkBtnStyle" data-hulkappsMoveItemsOk >Yes</button>
+                        <button class="wishlist-btn hulkBtnStyle" data-hulkappsMoveItemsCancel >Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
