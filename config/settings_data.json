@@ -160,14 +160,6 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "18218067344242134805": {
-        "type": "shopify:\/\/apps\/product-reviews-ugc-with-q-a\/blocks\/app\/34006358-52bd-4ec7-8c78-200fe58b77ba",
-        "disabled": true,
-        "settings": {
-        }
-      }
-    }
+    ]
   }
 }

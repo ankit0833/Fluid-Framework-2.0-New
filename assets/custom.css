@@ -1,0 +1,21 @@
+.custom-collection {
+    display: flex;
+  }
+  .product-details h1 {
+      font-size: 30px;
+  }
+  .product-details h4 {
+    font-size: 16px;
+  }
+  select#sort-by {
+    margin-top: 12px;
+  }
+  span.prev {
+    margin: 1px 2px;
+}
+span.next {
+    margin: 1px 2px;
+}
+.custom-quantity{
+display:none;
+}

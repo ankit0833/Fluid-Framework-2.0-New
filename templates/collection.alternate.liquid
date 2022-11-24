@@ -1,0 +1,79 @@
+{% layout none  %}
+<main-collection class="custom-collection container">
+  <div class="row">
+    <div class="col-12 header_collection">
+      <select id="sort-by">
+        {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+        {% for option in collection.sort_options %}
+          <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>
+            {{ option.name }}
+          </option>
+        {% endfor %}
+      </select>
+
+      {%- capture contentForQuerystring -%}
+        {{ content_for_header }}{%- endcapture -%}
+      {%- assign page_url = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |   replace:'\/','/' |    replace:'%20',' ' |    replace:'\u0026','&'  -%}
+      {%- assign param_page = '10' -%}
+      {%- for i in (1..1) -%}
+        {%- unless page_url contains "?" -%}
+          {% break %}{%- endunless -%}
+        {%- assign query_string = page_url | split:'?' | last -%}
+        {%- assign qry_parts= query_string | split:'&' -%}
+        {%- for part in qry_parts -%}
+          {%- assign key_and_value = part | split:'=' -%}
+          {%- if key_and_value.size > 1 -%}
+            {% if key_and_value[0] == 'count' %}
+              {%- assign param_page = key_and_value[1] -%}
+            {% endif%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endfor -%}
+
+      <select product_limit>
+        <option {% if param_page == '5' %}selected{% endif %} value="5">5</option>
+        <option {% if param_page == '10' %}selected{% endif %} value="10">10</option>
+        <option {% if param_page == '15' %}selected{% endif %} value="15">15</option>
+        <option {% if param_page == '20' %}selected{% endif %} value="20">20</option>
+        <option {% if param_page == '25' %}selected{% endif %} value="25">25</option>
+      </select>
+    </div>
+
+    {% paginate collection.products by param_page %}
+      {% for product in collection.products %}
+        <div class="col-3">
+          {%- assign featured_image = product.selected_or_first_vailable_variant.featured_image | default: product.featured_image -%}
+          <a href="{{ product.url }}">
+            <img src="{{ featured_image | img_url: '1024x' }}" alt="{{ featured_image.alt | escape }}">
+          </a>
+          <div class="product-details">
+            <h1>{{ product.title }}</h1>
+            <h4>{{ product.price | money }}</h4>
+          </div>
+
+          {%- assign product_form_id = 'product-form-' | append: product.id -%}
+            {% form 'product', product, data-productid: product.id, id: product_form_id, class: "mt-4", data-product-form: "", data-product-id: product.id, data-type: 'add-to-cart-form', data-format: format %}
+            <!-- Variant selector -->
+            <div class="variants-submit">
+              <select product_id="{{ product.id }}" name="id">
+                {% for variant in product.variants %}
+                  <option variant_id="{{ product.id }}" value="{{ variant.id }}" {% if variant == current_variant %}selected="selected"{% endif %}>
+                    {{ variant.title }} - {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+              <input type="hidden" name="quantity" aria-label="{{ 'products.product.quantity.input_label' | t: product: product.title | escape }}" value="1" step="1" min="1" inputmode="numeric" data-qty-input class="quantity form-control text-center" readonly>
+              <button product_id="{{ product.id }}" class="btn btn-primary btn-sm flex-grow-1 add_cart_btn" type="submit" name="add">
+                <span class="add-text">ADD TO CART</span>
+                <span class="spinner"></span>
+              </button>
+            </div>
+          {% endform %}
+        </div>
+      {% endfor %}
+      {%- if paginate.pages > 1 -%}
+        {% render 'pagination', paginate: paginate %}
+      {%- endif -%}
+    {% endpaginate %}
+  </div>
+</main-collection>
