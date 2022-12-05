@@ -261,6 +261,7 @@ class AjaxCart extends HTMLElement {
       event.preventDefault();
       let currentTarget = event.currentTarget;
       let itemIndex = currentTarget.dataset.index || null;
+      console.log('itemIndex',itemIndex)
       if(itemIndex != null){
           this.updateItemQty(itemIndex, 0);
       }
