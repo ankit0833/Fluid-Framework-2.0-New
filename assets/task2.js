@@ -78,6 +78,7 @@ class main_collection extends HTMLElement{
                 .then(response => response.text())
                 .then((data) => {
                     document.querySelector("main-collection").innerHTML = data;
+                  console.log(data);
                 });
             })
         })
