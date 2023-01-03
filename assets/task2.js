@@ -18,7 +18,7 @@ class main_collection extends HTMLElement{
             this.pagination(pagination_btn);
         }
         document.addEventListener("scroll", (event) => {
-
+           this.pagination()
         })  
       
     }
