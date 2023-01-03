@@ -72,9 +72,9 @@ class main_collection extends HTMLElement{
     pagination() {
        var y = window.scrollY;
           if (y >= 800) {
-              myID.className = "bottomMenu show"
+              const.log("true")
           } else {
-              myID.className = "bottomMenu hide"
+              const.log("false")
           }
       
         // pagination_btn.forEach((button) => {
