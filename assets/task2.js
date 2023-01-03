@@ -17,6 +17,10 @@ class main_collection extends HTMLElement{
         if (pagination_btn.length > 0) {
             this.pagination(pagination_btn);
         }
+        document.addEventListener("scroll", (event) => {
+
+        })  
+      
     }
 
     SortBy(sort_by){
@@ -65,23 +69,30 @@ class main_collection extends HTMLElement{
         })   
     }
     
-    pagination(pagination_btn) {
-        pagination_btn.forEach((button) => {
-            button.addEventListener('click', () => {
-                event.preventDefault();
-                var page_no = button.getAttribute("page_no");
-                var state = ''
-                var title = ''
-                var url = `/collections/home-page?page=${page_no}`
-                history.pushState(state, title, url);
-                fetch(`/collections/home-page?page=${page_no}&view=alternate`)
-                .then(response => response.text())
-                .then((data) => {
-                    document.querySelector("main-collection").innerHTML = data;
-                  console.log(data);
-                });
-            })
-        })
+    pagination() {
+       var y = window.scrollY;
+          if (y >= 800) {
+              myID.className = "bottomMenu show"
+          } else {
+              myID.className = "bottomMenu hide"
+          }
+      
+        // pagination_btn.forEach((button) => {
+        //     button.addEventListener('click', () => {
+        //         event.preventDefault();
+        //         var page_no = button.getAttribute("page_no");
+        //         var state = ''
+        //         var title = ''
+        //         var url = `/collections/home-page?page=${page_no}`
+        //         history.pushState(state, title, url);
+        //         fetch(`/collections/home-page?page=${page_no}&view=alternate`)
+        //         .then(response => response.text())
+        //         .then((data) => {
+        //             document.querySelector("main-collection").innerHTML = data;
+        //           console.log(data);
+        //         });
+        //     })
+        // })
     } 
 }
 customElements.define("main-collection", main_collection)
