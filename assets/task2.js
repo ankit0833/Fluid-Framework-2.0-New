@@ -81,6 +81,7 @@ class main_collection extends HTMLElement{
                 fetch(`/collections/home-page?page=${page_no}&view=alternate`)
                 .then(response => response.text())
                 .then((data) => {
+                  console.log(data)
                     document.querySelector("main-collection").innerHTML = data;
                   console.log(data);
                 });
