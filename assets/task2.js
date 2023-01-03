@@ -72,9 +72,9 @@ class main_collection extends HTMLElement{
                 var page_no = button.getAttribute("page_no");
                 var state = ''
                 var title = ''
-                var url = `/collections/task-1?page=${page_no}`
+                var url = `/collections/home-page?page=${page_no}`
                 history.pushState(state, title, url);
-                fetch(`/collections/task-1?page=${page_no}&view=alternate`)
+                fetch(`/collections/home-page?page=${page_no}&view=alternate`)
                 .then(response => response.text())
                 .then((data) => {
                     document.querySelector("main-collection").innerHTML = data;
