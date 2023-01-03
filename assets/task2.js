@@ -5,6 +5,7 @@ class main_collection extends HTMLElement{
         //var pagination_btn = document.querySelectorAll("[data-pagination]");
         var sort_by = document.querySelector("#sort-by");
         var add_cart_btn = document.querySelectorAll(".add_cart_btn");
+        var body_main = document.getElementsByTagName("BODY")[0];
         if(product_limit!==null){
             this.ShowProduct(product_limit);
         } 
@@ -17,9 +18,11 @@ class main_collection extends HTMLElement{
         // if (pagination_btn.length > 0) {
         //     this.pagination(pagination_btn);
         // }
-        document.addEventListener("scroll", (event) => {
+
+        if(body_main!=null){
            this.pagination()
-        })  
+        }
+    
       
     }
 
