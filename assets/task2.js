@@ -2,10 +2,9 @@ class main_collection extends HTMLElement{
     constructor(){
         super();
         var product_limit = document.querySelector("[product_limit]");
-        //var pagination_btn = document.querySelectorAll("[data-pagination]");
+        var pagination_btn = document.querySelectorAll("[data-pagination]");
         var sort_by = document.querySelector("#sort-by");
         var add_cart_btn = document.querySelectorAll(".add_cart_btn");
-        var body_main = document.getElementsByTagName("BODY")[0];
         if(product_limit!==null){
             this.ShowProduct(product_limit);
         } 
@@ -15,14 +14,12 @@ class main_collection extends HTMLElement{
         if (add_cart_btn.length > 0) {
             this.AddCart(add_cart_btn);
         }
-        // if (pagination_btn.length > 0) {
-        //     this.pagination(pagination_btn);
-        // }
-
-        if(body_main!=null){
-           this.pagination()
+        if (pagination_btn.length > 0) {
+            this.pagination(pagination_btn);
         }
-    
+        document.addEventListener("scroll", (event) => {
+
+        })  
       
     }
 
@@ -72,30 +69,23 @@ class main_collection extends HTMLElement{
         })   
     }
     
-    pagination() {
-       var y = window.scrollY;
-          if (y >= 800) {
-              const.log("true")
-          } else {
-              const.log("false")
-          }
-      
-        // pagination_btn.forEach((button) => {
-        //     button.addEventListener('click', () => {
-        //         event.preventDefault();
-        //         var page_no = button.getAttribute("page_no");
-        //         var state = ''
-        //         var title = ''
-        //         var url = `/collections/home-page?page=${page_no}`
-        //         history.pushState(state, title, url);
-        //         fetch(`/collections/home-page?page=${page_no}&view=alternate`)
-        //         .then(response => response.text())
-        //         .then((data) => {
-        //             document.querySelector("main-collection").innerHTML = data;
-        //           console.log(data);
-        //         });
-        //     })
-        // })
+    pagination(pagination_btn) {
+        pagination_btn.forEach((button) => {
+            button.addEventListener('click', () => {
+                event.preventDefault();
+                var page_no = button.getAttribute("page_no");
+                var state = ''
+                var title = ''
+                var url = `/collections/home-page?page=${page_no}`
+                history.pushState(state, title, url);
+                fetch(`/collections/home-page?page=${page_no}&view=alternate`)
+                .then(response => response.text())
+                .then((data) => {
+                    document.querySelector("main-collection").innerHTML = data;
+                  console.log(data);
+                });
+            })
+        })
     } 
 }
 customElements.define("main-collection", main_collection)
