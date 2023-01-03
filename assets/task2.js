@@ -2,7 +2,7 @@ class main_collection extends HTMLElement{
     constructor(){
         super();
         var product_limit = document.querySelector("[product_limit]");
-        var pagination_btn = document.querySelectorAll("[data-pagination]");
+        //var pagination_btn = document.querySelectorAll("[data-pagination]");
         var sort_by = document.querySelector("#sort-by");
         var add_cart_btn = document.querySelectorAll(".add_cart_btn");
         if(product_limit!==null){
@@ -14,9 +14,9 @@ class main_collection extends HTMLElement{
         if (add_cart_btn.length > 0) {
             this.AddCart(add_cart_btn);
         }
-        if (pagination_btn.length > 0) {
-            this.pagination(pagination_btn);
-        }
+        // if (pagination_btn.length > 0) {
+        //     this.pagination(pagination_btn);
+        // }
         document.addEventListener("scroll", (event) => {
            this.pagination()
         })  
